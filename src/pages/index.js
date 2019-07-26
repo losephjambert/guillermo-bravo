@@ -1,6 +1,5 @@
 import React from 'react'
-import { useStaticQuery, graphql } from 'gatsby'
-// import { Link } from 'gatsby'
+import { useStaticQuery, graphql, Link } from 'gatsby'
 
 import SEO from '../components/seo'
 import ProductGrid from '../components/ProductGrid'
@@ -37,12 +36,11 @@ const IndexPage = () => {
   )
   const { galleryImages } = galleryData.allContentfulImageGallery.edges[0].node
 
-  const placeholderStyles = {}
-
   return (
     <>
       <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} />
       <p>Welcome to your new Shop powered by Gatsby and Shopify.</p>
+      <Link to="/page-2">Page 2</Link>
       {galleryImages.map(image => (
         <div key={image.id}>
           <Img fluid={image.fluid} alt={image.title} />
