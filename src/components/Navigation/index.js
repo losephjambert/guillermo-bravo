@@ -1,5 +1,5 @@
 import React, { useContext, useState, useEffect } from 'react'
-import { Link } from 'gatsby'
+import { useStaticQuery, graphql, Link } from 'gatsby'
 import PropTypes from 'prop-types'
 import styled from '@emotion/styled'
 import { Flex, Box } from '@rebass/grid/emotion'
@@ -64,6 +64,7 @@ const countQuantity = lineItems => {
 }
 
 const Navigation = ({ siteTitle }) => {
+  // nav cart display quantity
   const context = useContext(StoreContext)
   const { checkout } = context
   const [quantity, setQuantity] = useState(
@@ -74,10 +75,43 @@ const Navigation = ({ siteTitle }) => {
     setQuantity(countQuantity(checkout ? checkout.lineItems : []))
   }, [checkout])
 
+  const data = useStaticQuery(
+    graphql`
+      query {
+        allShopifyCollection {
+          edges {
+            node {
+              id
+              title
+              handle
+            }
+          }
+        }
+      }
+    `
+  )
+
+  const collections = data.allShopifyCollection.edges
+  const ProductMenu = (
+    <li>
+      <h1>Products</h1>
+      <ul>
+        {collections.map(collection => (
+          <li key={collection.node.id}>
+            <Link to={`/collection/${collection.node.handle}`}>
+              {collection.node.title}
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </li>
+  )
+
   return (
     <Wrapper>
       <Container>
-        <Box>
+        <Box>{ProductMenu}</Box>
+        <Box ml="auto">
           <H1 to="/">{siteTitle}</H1>
         </Box>
         <Box ml="auto">

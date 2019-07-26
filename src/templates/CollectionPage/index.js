@@ -7,7 +7,6 @@ import { Img } from '../../utils/styles'
 const CollectionPage = ({ data }) => {
   const collection = data.shopifyCollection
   const products = collection.products
-  console.log(collection, products)
   return (
     <Flex flexWrap="wrap" mx={-2}>
       {products.map(product => (
