@@ -4,7 +4,7 @@ import { useStaticQuery, graphql, Link } from 'gatsby'
 import SEO from '../components/seo'
 import ProductGrid from '../components/ProductGrid'
 
-import { Img } from '../utils/styles'
+import { Img } from '../utils/styles' //need to update utils/styles to not use emotion...
 
 const IndexPage = () => {
   const galleryData = useStaticQuery(

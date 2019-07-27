@@ -3,8 +3,8 @@ import PropTypes from 'prop-types'
 import { StaticQuery, graphql } from 'gatsby'
 
 import StoreContext, { defaultStoreContext } from '../context/StoreContext'
-import { GlobalStyle } from '../utils/styles'
-import Navigation from '../components/Navigation';
+import { GlobalStyle } from '../utils/styles' // need to update utils/styles to not use emotion
+import Navigation from '../components/Navigation'
 
 class Layout extends React.Component {
   state = {
@@ -122,7 +122,7 @@ class Layout extends React.Component {
 
     return (
       <StoreContext.Provider value={this.state.store}>
-        <GlobalStyle/>
+        <GlobalStyle />
         <StaticQuery
           query={graphql`
             query SiteTitleQuery {

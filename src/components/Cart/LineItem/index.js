@@ -1,5 +1,4 @@
 import React, { useContext } from 'react'
-import { Flex, Box } from '@rebass/grid/emotion'
 
 import StoreContext from '../../../context/StoreContext'
 
@@ -16,9 +15,11 @@ const LineItem = props => {
   ) : null
 
   const selectedOptions = line_item.variant.selectedOptions ? (
-    <>{line_item.variant.selectedOptions.map(option => {
-      return `${option.name}: ${option.value} `
-    })}</>
+    <>
+      {line_item.variant.selectedOptions.map(option => {
+        return `${option.name}: ${option.value} `
+      })}
+    </>
   ) : null
 
   const handleRemove = () => {
@@ -26,33 +27,23 @@ const LineItem = props => {
   }
 
   return (
-    <Flex
-      py={2}
-      flexWrap='wrap'
-      justifyContent='space-between'
-      alignItems='center'
-    >
-      <Box>
-        {variantImage}
-      </Box>
-      <Box>
+    <div>
+      <div>{variantImage}</div>
+      <div>
         <p>
           {line_item.title}
           {`  `}
-          {line_item.variant.title === ! 'Default Title' ? line_item.variant.title : ''}
+          {line_item.variant.title === !'Default Title'
+            ? line_item.variant.title
+            : ''}
         </p>
-      </Box>
-      <Box>
-        {selectedOptions}
-      </Box>
-      <Box>
-        {line_item.quantity}
-        {console.log(line_item)}
-      </Box>
-      <Box>
+      </div>
+      <div>{selectedOptions}</div>
+      <div>{line_item.quantity}</div>
+      <div>
         <button onClick={handleRemove}>Remove</button>
-      </Box>
-    </Flex>
+      </div>
+    </div>
   )
 }
 

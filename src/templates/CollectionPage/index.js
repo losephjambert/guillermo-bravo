@@ -1,16 +1,15 @@
 import React from 'react'
 import { graphql, Link } from 'gatsby'
-import { Flex, Box } from '@rebass/grid/emotion'
 
-import { Img } from '../../utils/styles'
+import { Img } from '../../utils/styles' //need to update utils/styles to not use emotion...
 
 const CollectionPage = ({ data }) => {
   const collection = data.shopifyCollection
   const products = collection.products
   return (
-    <Flex flexWrap="wrap" mx={-2}>
+    <div>
       {products.map(product => (
-        <Box width={[1, 1 / 2, 1 / 3]} px={2} key={product.id}>
+        <div key={product.id}>
           <Link to={`/product/${product.handle}/`}>
             <Img
               fluid={product.images[0].localFile.childImageSharp.fluid}
@@ -21,9 +20,9 @@ const CollectionPage = ({ data }) => {
           {!product.variants[0].compareAtPrice && (
             <p>{product.variants[0].price}</p>
           )}
-        </Box>
+        </div>
       ))}
-    </Flex>
+    </div>
   )
 }
 
