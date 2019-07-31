@@ -3,13 +3,7 @@ import { useStaticQuery, graphql, Link } from 'gatsby'
 import PropTypes from 'prop-types'
 import StoreContext from '../../context/StoreContext'
 
-const H1 = props => (
-  <h1>
-    <Link {...props}>{props.children}</Link>
-  </h1>
-)
-
-const Container = props => <div {...props} />
+const H1 = props => <Link {...props}>{props.children}</Link>
 
 const countQuantity = lineItems => {
   let quantity = 0
@@ -67,18 +61,18 @@ const Navigation = ({ siteTitle }) => {
 
   return (
     <div>
-      <Container>
+      <div>
         <div>{ProductMenu}</div>
+        <h1>
+          <Link to="/">{siteTitle}</Link>
+        </h1>
         <div>
-          <H1 to="/">{siteTitle}</H1>
-        </div>
-        <div>
-          <H1 to="/cart">
+          <Link to="/cart">
             {quantity !== 0 && <span>{quantity}</span>}
             Cart
-          </H1>
+          </Link>
         </div>
-      </Container>
+      </div>
     </div>
   )
 }
