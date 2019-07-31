@@ -60,7 +60,7 @@ const Navigation = ({ siteTitle }) => {
   )
 
   return (
-    <div>
+    <nav>
       <div>
         <div>{ProductMenu}</div>
         <h1>
@@ -73,7 +73,7 @@ const Navigation = ({ siteTitle }) => {
           </Link>
         </div>
       </div>
-    </div>
+    </nav>
   )
 }
 
