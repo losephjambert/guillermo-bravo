@@ -1,7 +1,6 @@
 import React, { useContext, useState, useEffect } from 'react'
 import { useStaticQuery, graphql, Link } from 'gatsby'
 import PropTypes from 'prop-types'
-
 import StoreContext from '../../context/StoreContext'
 
 const H1 = props => (

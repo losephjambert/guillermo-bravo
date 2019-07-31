@@ -1,7 +1,7 @@
 import React from 'react'
 import { graphql, Link } from 'gatsby'
 
-import { Img } from '../../utils/styles' //need to update utils/styles to not use emotion...
+import { Img } from '../../utils/styles'
 
 const CollectionPage = ({ data }) => {
   const collection = data.shopifyCollection

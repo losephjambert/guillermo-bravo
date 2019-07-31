@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { StaticQuery, graphql } from 'gatsby'
 
 import StoreContext, { defaultStoreContext } from '../context/StoreContext'
-import { GlobalStyle } from '../utils/styles' // need to update utils/styles to not use emotion
+import { GlobalStyle } from '../utils/styles'
 import Navigation from '../components/Navigation'
 
 class Layout extends React.Component {

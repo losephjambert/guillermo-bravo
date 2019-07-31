@@ -1,7 +1,7 @@
 import React from 'react'
 import { useStaticQuery, graphql, Link } from 'gatsby'
 
-import { Img } from '../../utils/styles' //need to update the Img component in utils/styles to not use emotion...
+import { Img } from '../../utils/styles'
 
 const ProductGrid = () => {
   const data = useStaticQuery(
