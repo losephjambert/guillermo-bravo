@@ -69,10 +69,7 @@ const ProductForm = props => {
   if (productVariant.compareAtPrice > productVariant.price) {
     price = (
       <>
-        <span
-          className="strike-thru"
-          style={{ textDecoration: 'line-through' }}
-        >
+        <span style={{ textDecoration: 'line-through' }}>
           {productVariant.compareAtPrice}
         </span>{' '}
         <span>{productVariant.price}</span> <span>sale</span>
