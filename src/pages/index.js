@@ -1,9 +1,7 @@
 import React from 'react'
-import { useStaticQuery, graphql, Link } from 'gatsby'
-
+import { useStaticQuery, graphql } from 'gatsby'
+import { GridContainer, GridItem } from '../utils/styles'
 import SEO from '../components/seo'
-import ProductGrid from '../components/ProductGrid'
-
 import { Img } from '../utils/styles'
 
 const IndexPage = () => {
@@ -38,15 +36,17 @@ const IndexPage = () => {
 
   return (
     <>
-      <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} />
-      <p>Welcome to your new Shop powered by Gatsby and Shopify.</p>
-      <Link to="/page-2">Page 2</Link>
-      {galleryImages.map(image => (
-        <div key={image.id}>
-          <Img fluid={image.fluid} alt={image.title} />
-        </div>
-      ))}
-      <ProductGrid />
+      <SEO
+        title="Home"
+        keywords={[`sneakers`, `fashion`, `sustainable`, `Seattle`]}
+      />
+      <GridContainer>
+        {galleryImages.map(image => (
+          <GridItem key={image.id}>
+            <Img fluid={image.fluid} alt={image.title} />
+          </GridItem>
+        ))}
+      </GridContainer>
     </>
   )
 }

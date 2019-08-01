@@ -1,7 +1,6 @@
 import Image from 'gatsby-image'
-import styled from 'styled-components'
-
-import { createGlobalStyle } from 'styled-components'
+import styled, { createGlobalStyle } from 'styled-components'
+import tw from 'tailwind.macro'
 
 export const GlobalStyle = createGlobalStyle`
   body {
@@ -23,5 +22,12 @@ export const Img = styled(Image)`
   padding-left: 0;
   padding-right: 0;
   padding-top: 0;
-  margin-bottom: 1.45rem;
 `
+export const GridContainer = styled.div`
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: repeat(5, 300px);
+  overflow: scroll;
+`
+
+export const GridItem = styled.div``

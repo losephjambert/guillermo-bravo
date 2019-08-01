@@ -1,9 +1,12 @@
+// To Do:
+// Set up Blog, Studio, and Customer Care content in Contentful
+// nav is currently a mix of hard-coded links and dynamic links.
+// the contentful data will make it fully dynamic
+
 import React, { useContext, useState, useEffect } from 'react'
 import { useStaticQuery, graphql, Link } from 'gatsby'
 import PropTypes from 'prop-types'
 import StoreContext from '../../context/StoreContext'
-import styled from 'styled-components'
-import tw from 'tailwind.macro'
 
 const countQuantity = lineItems => {
   let quantity = 0
@@ -44,9 +47,9 @@ const Navigation = ({ siteTitle }) => {
   )
 
   const collections = data.allShopifyCollection.edges
-  const ProductMenu = (
-    <section>
-      <h1>Products</h1>
+  const Products = (
+    <li>
+      Products
       <ul>
         {collections.map(collection => (
           <li key={collection.node.id}>
@@ -56,20 +59,30 @@ const Navigation = ({ siteTitle }) => {
           </li>
         ))}
       </ul>
-    </section>
+    </li>
   )
 
   return (
     <nav>
       <div>
-        <div>{ProductMenu}</div>
         <h1>
           <Link to="/">{siteTitle}</Link>
         </h1>
+        <ul>
+          <li>
+            <Link to="/">Home</Link>
+          </li>
+          {Products}
+          <li>
+            <Link to="/studio">Studio</Link>
+          </li>
+          <li>
+            <Link to="/blog">Blog</Link>
+          </li>
+        </ul>
         <div>
           <Link to="/cart">
-            {quantity !== 0 && <span>{quantity}</span>}
-            Cart
+            Cart {quantity !== 0 && <span>{quantity}</span>}
           </Link>
         </div>
       </div>
