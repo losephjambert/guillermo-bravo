@@ -9,6 +9,11 @@ module.exports = {
     author: `@losephjambert`,
   },
   plugins: [
+    `gatsby-transformer-sharp`,
+    `gatsby-plugin-sharp`,
+    `gatsby-plugin-layout`,
+    `gatsby-plugin-tailwindcss`,
+    `gatsby-plugin-styled-components`,
     `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-source-filesystem`,
@@ -17,9 +22,6 @@ module.exports = {
         path: `${__dirname}/src/images`,
       },
     },
-    `gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`,
-    `gatsby-plugin-layout`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
@@ -62,26 +64,6 @@ module.exports = {
         accessToken: `${process.env.CONTENTFUL_ACCESS_TOKEN}`,
       },
     },
-    // This is currently not working. Don't really know how to solve it. It seems there's a bug with the gatsby-source-graphql plugin
-    // {
-    //   resolve: `gatsby-source-graphql`,
-    //   options: {
-    //     // This type will contain remote schema Query type
-    //     typeName: 'QueryRoot',
-    //     // This is the field under which it's accessible
-    //     fieldName: 'pages',
-    //     // URL to query from
-    //     url: `https://${process.env.SHOP_NAME}.myshopify.com/api/2019-07/graphql`,
-    //     headers: {
-    //       'X-Shopify-Access-Token': `${process.env.SHOPIFY_ACCESS_TOKEN}`,
-    //       'Content-Type': 'application/graphql',
-    //     },
-    //     fetchOptions: {
-    //       method: 'POST',
-    //     },
-    //     refetchInterval: 60,
-    //   },
-    // },
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {

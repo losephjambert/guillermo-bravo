@@ -2,6 +2,11 @@ import React, { useContext, useState, useEffect } from 'react'
 import { useStaticQuery, graphql, Link } from 'gatsby'
 import PropTypes from 'prop-types'
 import StoreContext from '../../context/StoreContext'
+import styled from 'styled-components'
+import tw from 'tailwind.macro'
+const Button = styled.button`
+  ${tw`bg-blue hover:bg-blue-dark text-white p-5 rounded`};
+`
 
 const H1 = props => <Link {...props}>{props.children}</Link>
 
@@ -47,6 +52,7 @@ const Navigation = ({ siteTitle }) => {
   const ProductMenu = (
     <section>
       <h1>Products</h1>
+      <Button>😎</Button>
       <ul>
         {collections.map(collection => (
           <li key={collection.node.id}>
