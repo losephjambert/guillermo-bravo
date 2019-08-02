@@ -37,6 +37,15 @@ const Header = ({ siteTitle, path }) => {
   const [isSiteMenuOpen, setIsSiteMenuOpen] = useState(false)
   const toggleSiteMenu = () => setIsSiteMenuOpen(!isSiteMenuOpen)
 
+  // currently active section within Products
+  const [activeSection, setActiveSection] = useState('')
+  // const toggleSiteMenu = () => setIsSiteMenuOpen(!isSiteMenuOpen)
+  // useEffect(() => {
+  //   // if componentDidUpdate or componentDidMount
+  //   setActiveSection(path)
+  // })
+  console.log('Active Section: ', activeSection)
+
   // get collection headers for shopping menu
   const data = useStaticQuery(
     graphql`
@@ -64,8 +73,12 @@ const Header = ({ siteTitle, path }) => {
         {collections.map(collection => (
           <ProductMenuItem
             key={collection.node.id}
-            active={path.toUpperCase() === `/products/${collection.node.handle}/`.toUpperCase()}
+            active={
+              path.toUpperCase() === `/products/${collection.node.handle}/`.toUpperCase() ||
+              activeSection === `/products/${collection.node.handle}/`
+            }
             paths={[path.replace(/[/]/g, '').toUpperCase(), `/products/${collection.node.handle}/`.toUpperCase()]}
+            onClick={() => setActiveSection(`/products/${collection.node.handle}/`)}
           >
             <Link to={`/products/${collection.node.handle}`} style={{ textTransform: 'capitalize' }}>
               {collection.node.title.toLowerCase()}
@@ -78,7 +91,7 @@ const Header = ({ siteTitle, path }) => {
 
   return (
     <StyledHeader>
-      <Nav path={path}>
+      <Nav>
         <h1>
           <Link to="/">{siteTitle}</Link>
         </h1>
