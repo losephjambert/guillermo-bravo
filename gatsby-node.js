@@ -33,7 +33,7 @@ exports.createPages = ({ graphql, actions }) => {
     })
     result.data.allShopifyCollection.edges.forEach(({ node }) => {
       createPage({
-        path: `/${node.handle}/`,
+        path: `products/${node.handle}/`,
         component: path.resolve(`./src/templates/CollectionPage/index.js`),
         context: {
           // Data passed to context is available

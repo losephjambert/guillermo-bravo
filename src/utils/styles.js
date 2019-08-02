@@ -56,7 +56,7 @@ const PosedPanel = posed.ul({
     }
   },
   closed: {
-    delay: 300,
+    delay: 100,
     height: '0px',
     x: '-100%',
     opacity: 0
@@ -69,11 +69,19 @@ const PosedFadeInItem = posed.li({
 const PosedFadeInPanel = posed.ul({
   open: {
     height: 'auto',
-    opacity: 1
+    opacity: 1,
+    transition: {
+      height: { ease: 'linear', duration: 0, delay: 0 },
+      opacity: { ease: 'easeIn', duration: 300, delay: 0 }
+    }
   },
   closed: {
     height: '0px',
-    opacity: 0
+    opacity: 0,
+    transition: {
+      opacity: { ease: 'easeOut', duration: 300, delay: 0 },
+      height: { ease: 'linear', duration: 0, delay: 300 }
+    }
   }
 })
 export const StyledHeader = styled.header`
@@ -93,6 +101,10 @@ export const Menu = styled.ul`
 `
 export const MenuItem = styled.li`
   font-weight: bold;
+  color: ${props => (props.active ? 'black' : 'grey')};
+  &:hover {
+    color: black;
+  }
   a {
     color: inherit;
     text-decoration: none;
@@ -118,8 +130,13 @@ export const MenuToggle = styled.button.attrs({
   outline: none;
   background-color: transparent;
 `
-export const SiteMenu = styled(PosedFadeInPanel)``
+export const SiteMenu = styled(PosedFadeInPanel)`
+  overflow: hidden;
+`
 export const ProductMenu = styled(PosedPanel)``
 export const ProductMenuItem = styled(PosedFadeInItem)`
-  color: ${props => (props.active ? 'green' : 'red')};
+  color: ${props => (props.active ? 'black' : 'grey')};
+  &:hover {
+    color: black;
+  }
 `

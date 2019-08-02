@@ -64,9 +64,10 @@ const Header = ({ siteTitle, path }) => {
         {collections.map(collection => (
           <ProductMenuItem
             key={collection.node.id}
-            active={path.replace(/[/]/g, '').toUpperCase() === collection.node.handle.toUpperCase()}
+            active={path.toUpperCase() === `/products/${collection.node.handle}/`.toUpperCase()}
+            paths={[path.replace(/[/]/g, '').toUpperCase(), `/products/${collection.node.handle}/`.toUpperCase()]}
           >
-            <Link to={`/${collection.node.handle}`} style={{ textTransform: 'capitalize' }}>
+            <Link to={`/products/${collection.node.handle}`} style={{ textTransform: 'capitalize' }}>
               {collection.node.title.toLowerCase()}
             </Link>
           </ProductMenuItem>
@@ -74,8 +75,6 @@ const Header = ({ siteTitle, path }) => {
       </ProductMenu>
     </>
   )
-
-  console.log(path, siteTitle)
 
   return (
     <StyledHeader>
@@ -97,14 +96,14 @@ const Header = ({ siteTitle, path }) => {
               {isSiteMenuOpen ? '🔺' : '🔻'}
             </MenuToggle>
             <SiteMenu pose={isSiteMenuOpen ? 'open' : 'closed'}>
-              <MenuItem>
+              <MenuItem active={path === '/'}>
                 <Link to="/">Home</Link>
               </MenuItem>
               <MenuItem>{Products}</MenuItem>
-              <MenuItem>
+              <MenuItem active={path === '/studio/'}>
                 <Link to="/studio">Studio</Link>
               </MenuItem>
-              <MenuItem>
+              <MenuItem active={path === '/blog/'}>
                 <Link to="/blog">Blog</Link>
               </MenuItem>
             </SiteMenu>
