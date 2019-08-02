@@ -1,6 +1,6 @@
 import Image from 'gatsby-image'
 import styled, { createGlobalStyle } from 'styled-components'
-import tw from 'tailwind.macro'
+// import tw from 'tailwind.macro'
 import styledNormalize from 'styled-normalize'
 import posed from 'react-pose'
 
@@ -44,12 +44,12 @@ export const GridContainer = styled.div`
 
 export const GridItem = styled.div``
 
-// Nav Menu
 const PosedPanel = posed.ul({
   open: {
     delayChildren: 200,
     staggerChildren: 200,
     height: 'auto',
+    opacity: 1,
     x: '0',
     transition: {
       x: { type: 'spring', stiffness: 1000, damping: 75 }
@@ -58,13 +58,23 @@ const PosedPanel = posed.ul({
   closed: {
     delay: 300,
     height: '0px',
-    x: '-100%'
+    x: '-100%',
+    opacity: 0
   }
 })
-
-const PosedItem = posed.li({
+const PosedFadeInItem = posed.li({
   open: { opacity: 1 },
   closed: { opacity: 0 }
+})
+const PosedFadeInPanel = posed.ul({
+  open: {
+    height: 'auto',
+    opacity: 1
+  },
+  closed: {
+    height: '0px',
+    opacity: 0
+  }
 })
 export const StyledHeader = styled.header`
   margin-bottom: 200px;
@@ -79,23 +89,9 @@ export const Nav = styled.nav`
   width: 100%;
 `
 export const Menu = styled.ul`
-  width: 300px;
   font-size: 2em;
 `
-export const HoverMenu = styled(PosedPanel)`
-  display: flex;
-  flex-flow: column nowrap;
-`
-export const HoverMenuItem = styled(PosedItem)`
-  display: inline-flex;
-  margin: 5px 0 5px 30px;
-  a {
-    padding: 10px 5px;
-    color: inherit;
-    text-decoration: none;
-  }
-`
-export const NavItem = styled.li`
+export const MenuItem = styled.li`
   font-weight: bold;
   a {
     color: inherit;
@@ -103,7 +99,7 @@ export const NavItem = styled.li`
     padding: 5px 0;
   }
 `
-export const HoverMenuTrigger = styled.button.attrs({
+export const MenuToggle = styled.button.attrs({
   type: 'button',
   'aria-label': 'more',
   'aria-controls': 'short-menu',
@@ -121,4 +117,9 @@ export const HoverMenuTrigger = styled.button.attrs({
   border: none;
   outline: none;
   background-color: transparent;
+`
+export const SiteMenu = styled(PosedFadeInPanel)``
+export const ProductMenu = styled(PosedPanel)``
+export const ProductMenuItem = styled(PosedFadeInItem)`
+  color: ${props => (props.active ? 'green' : 'red')};
 `

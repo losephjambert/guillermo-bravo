@@ -123,7 +123,7 @@ class Layout extends React.Component {
           `}
           render={data => (
             <>
-              <Header siteTitle={data.site.siteMetadata.title} />
+              <Header siteTitle={data.site.siteMetadata.title} path={this.props.path} />
               <main>{children}</main>
               <footer>© {new Date().getFullYear()} Guillermo Bravo, Seattle, WA</footer>
             </>

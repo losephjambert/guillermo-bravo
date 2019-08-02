@@ -36,10 +36,7 @@ const IndexPage = () => {
 
   return (
     <>
-      <SEO
-        title="Home"
-        keywords={[`sneakers`, `fashion`, `sustainable`, `Seattle`]}
-      />
+      <SEO title="Home" keywords={[`sneakers`, `fashion`, `sustainable`, `Seattle`]} />
       <GridContainer>
         {galleryImages.map(image => (
           <GridItem key={image.id}>
