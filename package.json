@@ -34,9 +34,11 @@
     "react-apollo": "^2.5.8",
     "react-dom": "16.8.6",
     "react-helmet": "^5.2.1",
+    "react-pose": "^4.0.8",
     "react-slick": "^0.24.0",
     "shopify-buy": "^2.6.1",
-    "styled-components": "^4.3.2"
+    "styled-components": "^4.3.2",
+    "styled-normalize": "^8.0.6"
   },
   "keywords": [
     "gatsby",
