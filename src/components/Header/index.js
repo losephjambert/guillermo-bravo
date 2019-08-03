@@ -138,8 +138,9 @@ const Header = ({ siteTitle, path }) => {
         </NavItem>
         <NavItem>
           <div>
-            {cartIcon}
-            <Link to="/cart"> {quantity !== 0 && <span>{quantity}</span>}</Link>
+            <Link to="/cart">
+              {cartIcon} {quantity !== 0 && <span>{quantity}</span>}
+            </Link>
           </div>
         </NavItem>
       </Nav>
