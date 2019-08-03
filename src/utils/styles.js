@@ -6,6 +6,9 @@ import posed from 'react-pose'
 
 export const GlobalStyle = createGlobalStyle`
   ${styledNormalize}
+  *{
+    box-sizing: border-box;
+  }
   body {
     margin: 0;
   }
@@ -23,6 +26,16 @@ export const GlobalStyle = createGlobalStyle`
     margin: 0;
     padding: 0;
   }
+`
+
+export const Title = styled.h1`
+  background: ${props => (props.bgImage ? `url(${props.bgImage})` : null)};
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  text-indent: -9999px;
+  width: 200px;
+  height: 50px;
 `
 
 export const Img = styled(Image)`
@@ -89,15 +102,26 @@ export const StyledHeader = styled.header`
 `
 export const Nav = styled.nav`
   position: fixed;
-  top: 0;
+  top: 50px;
   left: 0;
   z-index: 100;
-  padding: 0 0 0 50px;
-  min-height: 200px;
+  padding: 0 50px;
   width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 200px);
+  grid-column-gap: 1fr;
+  justify-content: space-between;
+  justify-items: end;
+`
+export const NavItem = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
 `
 export const Menu = styled.ul`
   font-size: 2em;
+  display: inline-flex;
+  width: 100%;
 `
 export const MenuItem = styled.li`
   font-weight: bold;
@@ -121,21 +145,35 @@ export const MenuToggle = styled.button.attrs({
     outline: none;
     border: none;
   }
+  &:hover {
+    color: black;
+  }
+  color: ${props => (props.active ? 'black' : 'grey')};
   padding: 0;
   display: inline-flex;
   font-weight: inherit;
   cursor: pointer;
-  color: inherit;
   border: none;
   outline: none;
   background-color: transparent;
 `
 export const SiteMenu = styled(PosedFadeInPanel)`
   overflow: hidden;
+  display: flex;
+  flex-flow: column nowrap;
+  position: relative;
+  top: 50px;
 `
-export const ProductMenu = styled(PosedPanel)``
+export const ProductMenu = styled(PosedPanel)`
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: flex-start;
+`
 export const ProductMenuItem = styled(PosedFadeInItem)`
   color: ${props => (props.active ? 'black' : 'grey')};
+  margin-left: 25px;
+  font-size: 0.8em;
+  display: inline-flex;
   &:hover {
     color: black;
   }

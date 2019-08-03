@@ -7,7 +7,21 @@ import React, { useContext, useState, useEffect } from 'react'
 import { useStaticQuery, graphql, Link } from 'gatsby'
 import PropTypes from 'prop-types'
 import StoreContext from '../../context/StoreContext'
-import { StyledHeader, Nav, Menu, MenuItem, MenuToggle, SiteMenu, ProductMenu, ProductMenuItem } from '../../utils/styles'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faShoppingCart, faBars } from '@fortawesome/free-solid-svg-icons'
+import {
+  StyledHeader,
+  Nav,
+  NavItem,
+  Menu,
+  MenuItem,
+  MenuToggle,
+  SiteMenu,
+  ProductMenu,
+  ProductMenuItem,
+  Title
+} from '../../utils/styles'
+import logo from '../../images/g-b-icon.png'
 
 const countQuantity = lineItems => {
   let quantity = 0
@@ -20,6 +34,9 @@ const countQuantity = lineItems => {
 }
 
 const Header = ({ siteTitle, path }) => {
+  // Nav Icons
+  const cartIcon = <FontAwesomeIcon style={{ fontSize: '1.9em' }} icon={faShoppingCart} />
+  const hamburger = <FontAwesomeIcon icon={faBars} />
   // cart quantity
   const context = useContext(StoreContext)
   const { checkout } = context
@@ -36,15 +53,6 @@ const Header = ({ siteTitle, path }) => {
   // boolean to handle open and closed states for SiteMenu
   const [isSiteMenuOpen, setIsSiteMenuOpen] = useState(false)
   const toggleSiteMenu = () => setIsSiteMenuOpen(!isSiteMenuOpen)
-
-  // currently active section within Products
-  const [activeSection, setActiveSection] = useState('')
-  // const toggleSiteMenu = () => setIsSiteMenuOpen(!isSiteMenuOpen)
-  // useEffect(() => {
-  //   // if componentDidUpdate or componentDidMount
-  //   setActiveSection(path)
-  // })
-  console.log('Active Section: ', activeSection)
 
   // get collection headers for shopping menu
   const data = useStaticQuery(
@@ -68,17 +76,15 @@ const Header = ({ siteTitle, path }) => {
   )
   const Products = (
     <>
-      <MenuToggle onClick={toggleProductMenu}>Products</MenuToggle>
+      <MenuToggle onClick={toggleProductMenu} active={isProductMenuOpen}>
+        Products
+      </MenuToggle>
       <ProductMenu pose={isProductMenuOpen ? 'open' : 'closed'} withParent={false}>
         {collections.map(collection => (
           <ProductMenuItem
             key={collection.node.id}
-            active={
-              path.toUpperCase() === `/products/${collection.node.handle}/`.toUpperCase() ||
-              activeSection === `/products/${collection.node.handle}/`
-            }
+            active={path.toUpperCase() === `/products/${collection.node.handle}/`.toUpperCase()}
             paths={[path.replace(/[/]/g, '').toUpperCase(), `/products/${collection.node.handle}/`.toUpperCase()]}
-            onClick={() => setActiveSection(`/products/${collection.node.handle}/`)}
           >
             <Link to={`/products/${collection.node.handle}`} style={{ textTransform: 'capitalize' }}>
               {collection.node.title.toLowerCase()}
@@ -92,36 +98,50 @@ const Header = ({ siteTitle, path }) => {
   return (
     <StyledHeader>
       <Nav>
-        <h1>
-          <Link to="/">{siteTitle}</Link>
-        </h1>
-        <div>
-          <Link to="/cart">Cart {quantity !== 0 && <span>{quantity}</span>}</Link>
-        </div>
-        <Menu>
-          <MenuItem>
-            <MenuToggle
-              onClick={() => {
-                toggleSiteMenu()
-                setIsProductMenuOpen(false)
-              }}
-            >
-              {isSiteMenuOpen ? '🔺' : '🔻'}
-            </MenuToggle>
-            <SiteMenu pose={isSiteMenuOpen ? 'open' : 'closed'}>
-              <MenuItem active={path === '/'}>
-                <Link to="/">Home</Link>
-              </MenuItem>
-              <MenuItem>{Products}</MenuItem>
-              <MenuItem active={path === '/studio/'}>
-                <Link to="/studio">Studio</Link>
-              </MenuItem>
-              <MenuItem active={path === '/blog/'}>
-                <Link to="/blog">Blog</Link>
-              </MenuItem>
-            </SiteMenu>
-          </MenuItem>
-        </Menu>
+        <NavItem>
+          <Menu>
+            <MenuItem>
+              <MenuToggle
+                onClick={() => {
+                  toggleSiteMenu()
+                  setIsProductMenuOpen(false)
+                }}
+                active={isSiteMenuOpen === true}
+              >
+                {hamburger}
+              </MenuToggle>
+              <SiteMenu pose={isSiteMenuOpen ? 'open' : 'closed'}>
+                <MenuItem active={path === '/'}>
+                  <Link to="/" onClick={() => setIsProductMenuOpen(false)}>
+                    Home
+                  </Link>
+                </MenuItem>
+                <MenuItem>{Products}</MenuItem>
+                <MenuItem active={path === '/studio/'}>
+                  <Link to="/studio" onClick={() => setIsProductMenuOpen(false)}>
+                    Studio
+                  </Link>
+                </MenuItem>
+                <MenuItem active={path === '/blog/'}>
+                  <Link to="/blog" onClick={() => setIsProductMenuOpen(false)}>
+                    Blog
+                  </Link>
+                </MenuItem>
+              </SiteMenu>
+            </MenuItem>
+          </Menu>
+        </NavItem>
+        <NavItem>
+          <Link to="/">
+            <Title bgImage={logo}>{siteTitle}</Title>
+          </Link>
+        </NavItem>
+        <NavItem>
+          <div>
+            {cartIcon}
+            <Link to="/cart"> {quantity !== 0 && <span>{quantity}</span>}</Link>
+          </div>
+        </NavItem>
       </Nav>
     </StyledHeader>
   )
