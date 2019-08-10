@@ -84,7 +84,6 @@ const Header = ({ siteTitle, path }) => {
           <ProductMenuItem
             key={collection.node.id}
             active={path.toUpperCase() === `/products/${collection.node.handle}/`.toUpperCase()}
-            paths={[path.replace(/[/]/g, '').toUpperCase(), `/products/${collection.node.handle}/`.toUpperCase()]}
           >
             <Link to={`/products/${collection.node.handle}`} style={{ textTransform: 'capitalize' }}>
               {collection.node.title.toLowerCase()}

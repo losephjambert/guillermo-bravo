@@ -27,8 +27,7 @@ exports.createPages = ({ graphql, actions }) => {
         context: {
           // Data passed to context is available
           // in page queries as GraphQL variables.
-          handle: node.handle,
-          path: `/product/${node.handle}/`
+          handle: node.handle
         }
       })
     })
@@ -39,8 +38,7 @@ exports.createPages = ({ graphql, actions }) => {
         context: {
           // Data passed to context is available
           // in page queries as GraphQL variables.
-          handle: node.handle,
-          path: `products/${node.handle}/`
+          handle: node.handle
         }
       })
     })
