@@ -1,12 +1,12 @@
 require('dotenv').config({
-  path: `.env.${process.env.NODE_ENV}`,
+  path: `.env.${process.env.NODE_ENV}`
 })
 var fs = require('fs')
 module.exports = {
   siteMetadata: {
     title: `Guillermo Bravo`,
     description: ``,
-    author: `@losephjambert`,
+    author: `@losephjambert`
   },
   plugins: [
     `gatsby-transformer-sharp`,
@@ -19,8 +19,8 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `images`,
-        path: `${__dirname}/src/images`,
-      },
+        path: `${__dirname}/src/images`
+      }
     },
     {
       resolve: `gatsby-plugin-manifest`,
@@ -31,8 +31,8 @@ module.exports = {
         background_color: `#663399`,
         theme_color: `#663399`,
         display: `minimal-ui`,
-        icon: `src/images/g-b-icon.png`, // This path is relative to the root of the site.
-      },
+        icon: `src/images/g-b-icon.png` // This path is relative to the root of the site.
+      }
     },
     {
       resolve: `gatsby-source-shopify2`,
@@ -54,26 +54,26 @@ module.exports = {
         // or `npm run build`. This prints which nodes are being fetched and how
         // much time was required to fetch and process the data.
         // Defaults to true.
-        verbose: true,
-      },
+        verbose: true
+      }
     },
     {
       resolve: `gatsby-source-contentful`,
       options: {
         spaceId: `${process.env.CONTENTFUL_SPACE_ID}`,
-        accessToken: `${process.env.CONTENTFUL_ACCESS_TOKEN}`,
-      },
+        accessToken: `${process.env.CONTENTFUL_ACCESS_TOKEN}`
+      }
     },
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
         trackingId: 'UA-134421805-1',
         anonymize: true,
-        respectDNT: true,
-      },
-    },
+        respectDNT: true
+      }
+    }
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.app/offline
     // 'gatsby-plugin-offline',
-  ],
+  ]
 }

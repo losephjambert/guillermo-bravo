@@ -3,8 +3,8 @@ import PropTypes from 'prop-types'
 import { StaticQuery, graphql } from 'gatsby'
 
 import StoreContext, { defaultStoreContext } from '../context/StoreContext'
+import Header from '../components/Header'
 import { GlobalStyle } from '../utils/styles'
-import Navigation from '../components/Navigation'
 
 class Layout extends React.Component {
   state = {
@@ -19,65 +19,53 @@ class Layout extends React.Component {
         this.setState(state => ({
           store: {
             ...state.store,
-            adding: true,
-          },
+            adding: true
+          }
         }))
 
         const { checkout, client } = this.state.store
         const checkoutId = checkout.id
-        const lineItemsToUpdate = [
-          { variantId, quantity: parseInt(quantity, 10) },
-        ]
+        const lineItemsToUpdate = [{ variantId, quantity: parseInt(quantity, 10) }]
 
-        return client.checkout
-          .addLineItems(checkoutId, lineItemsToUpdate)
-          .then(checkout => {
-            this.setState(state => ({
-              store: {
-                ...state.store,
-                checkout,
-                adding: false,
-              },
-            }))
-          })
+        return client.checkout.addLineItems(checkoutId, lineItemsToUpdate).then(checkout => {
+          this.setState(state => ({
+            store: {
+              ...state.store,
+              checkout,
+              adding: false
+            }
+          }))
+        })
       },
       removeLineItem: (client, checkoutID, lineItemID) => {
-        return client.checkout
-          .removeLineItems(checkoutID, [lineItemID])
-          .then(res => {
-            this.setState(state => ({
-              store: {
-                ...state.store,
-                checkout: res,
-              },
-            }))
-          })
+        return client.checkout.removeLineItems(checkoutID, [lineItemID]).then(res => {
+          this.setState(state => ({
+            store: {
+              ...state.store,
+              checkout: res
+            }
+          }))
+        })
       },
       updateLineItem: (client, checkoutID, lineItemID, quantity) => {
-        const lineItemsToUpdate = [
-          { id: lineItemID, quantity: parseInt(quantity, 10) },
-        ]
+        const lineItemsToUpdate = [{ id: lineItemID, quantity: parseInt(quantity, 10) }]
 
-        return client.checkout
-          .updateLineItems(checkoutID, lineItemsToUpdate)
-          .then(res => {
-            this.setState(state => ({
-              store: {
-                ...state.store,
-                checkout: res,
-              },
-            }))
-          })
-      },
-    },
+        return client.checkout.updateLineItems(checkoutID, lineItemsToUpdate).then(res => {
+          this.setState(state => ({
+            store: {
+              ...state.store,
+              checkout: res
+            }
+          }))
+        })
+      }
+    }
   }
 
   async initializeCheckout() {
     // Check for an existing cart.
     const isBrowser = typeof window !== 'undefined'
-    const existingCheckoutID = isBrowser
-      ? localStorage.getItem('shopify_checkout_id')
-      : null
+    const existingCheckoutID = isBrowser ? localStorage.getItem('shopify_checkout_id') : null
 
     const setCheckoutInState = checkout => {
       if (isBrowser) {
@@ -87,8 +75,8 @@ class Layout extends React.Component {
       this.setState(state => ({
         store: {
           ...state.store,
-          checkout,
-        },
+          checkout
+        }
       }))
     }
 
@@ -135,13 +123,9 @@ class Layout extends React.Component {
           `}
           render={data => (
             <>
-              <header>
-                <Navigation siteTitle={data.site.siteMetadata.title} />
-              </header>
+              <Header siteTitle={data.site.siteMetadata.title} path={this.props.path} />
               <main>{children}</main>
-              <footer>
-                © {new Date().getFullYear()} Guillermo Bravo, Seattle, WA
-              </footer>
+              <footer>© {new Date().getFullYear()} Guillermo Bravo, Seattle, WA</footer>
             </>
           )}
         />
@@ -151,7 +135,7 @@ class Layout extends React.Component {
 }
 
 Layout.propTypes = {
-  children: PropTypes.node.isRequired,
+  children: PropTypes.node.isRequired
 }
 
 export default Layout

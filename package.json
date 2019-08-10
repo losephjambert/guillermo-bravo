@@ -8,9 +8,13 @@
     "node": "=> 10.13 < 10.11"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.21",
+    "@fortawesome/free-solid-svg-icons": "^5.10.1",
+    "@fortawesome/react-fontawesome": "^0.1.4",
     "axios": "^0.19.0",
     "babel-plugin-styled-components": "^1.10.6",
     "gatsby": "^2.13.39",
+    "gatsby-cli": "^2.7.29",
     "gatsby-image": "^2.2.6",
     "gatsby-plugin-apollo-shopify": "^1.0.2",
     "gatsby-plugin-google-analytics": "^2.1.4",
@@ -34,9 +38,11 @@
     "react-apollo": "^2.5.8",
     "react-dom": "16.8.6",
     "react-helmet": "^5.2.1",
+    "react-pose": "^4.0.8",
     "react-slick": "^0.24.0",
     "shopify-buy": "^2.6.1",
-    "styled-components": "^4.3.2"
+    "styled-components": "^4.3.2",
+    "styled-normalize": "^8.0.6"
   },
   "keywords": [
     "gatsby",
