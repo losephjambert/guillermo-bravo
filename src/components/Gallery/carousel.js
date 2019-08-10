@@ -38,23 +38,39 @@ export default class SimpleSlider extends Component {
     }
 
     let boxes = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+    const backgroundSettings = {
+      backgroundRepeat: `no-repeat`,
+      backgroundSize: `100%`,
+      backgroundPosition: `center`,
+    }
+    const bgi1 = {
+      ...backgroundSettings,
+      backgroundImage: `url(https://www.fillmurray.com/750/325)`,
+    }
+    const bgi2 = {
+      ...backgroundSettings,
+      backgroundImage: `url(https://www.fillmurray.com/325/750)`,
+    }
     const flex = {
       display: `flex`,
       justifyContent: `center`,
       alignItems: `center`,
       fontSize: `3em`,
     }
+    const margin = {
+      margin: `0`,
+    }
     const evenStyles = {
       ...flex,
       width: `600px`,
-      height: `325px`,
-      backgroundColor: `tomato`,
+      height: `600px`,
+      // backgroundColor: `tomato`,
     }
     const oddStyles = {
       ...flex,
-      height: `400px`,
-      width: `575px`,
-      backgroundColor: `rebeccapurple`,
+      height: `600px`,
+      width: `600px`,
+      // backgroundColor: `rebeccapurple`,
     }
     const fixed = {
       position: `fixed`,
@@ -63,6 +79,17 @@ export default class SimpleSlider extends Component {
       bottom: 0,
       left: 0,
       zIndex: 0,
+    }
+
+    const AliceSettings = {
+      mouseDragEnabled: true,
+      responsive: {
+        0: { items: 3 },
+      },
+      // stagePadding: {
+      //   paddingLeft: 100,
+      //   paddingRight: 100,
+      // },
     }
     // return (
     //   <div>
@@ -88,19 +115,19 @@ export default class SimpleSlider extends Component {
     // )
 
     return (
-      <AliceCarousel mouseDragEnabled>
+      <AliceCarousel {...AliceSettings} style={fixed}>
         {boxes.map(box => {
           if (box % 2 === 0)
             return (
-              <div key={box} style={flex}>
-                <div style={evenStyles}>{box}</div>
+              <div key={box} style={{ ...flex, ...margin }}>
+                <div style={{ ...evenStyles, ...bgi1 }} />
                 {/* <img src="https://www.fillmurray.com/750/325" alt="" /> */}
               </div>
             )
           else
             return (
-              <div key={box} style={flex}>
-                <div style={oddStyles}>{box}</div>
+              <div key={box} style={{ ...flex, ...margin }}>
+                <div style={{ ...oddStyles, ...bgi2 }} />
                 {/* <img src="https://www.fillmurray.com/325/750" alt="" /> */}
               </div>
             )

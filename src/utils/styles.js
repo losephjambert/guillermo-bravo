@@ -26,6 +26,17 @@ export const GlobalStyle = createGlobalStyle`
     margin: 0;
     padding: 0;
   }
+  .alice-carousel__stage-item.__active {
+    transition: 100ms;
+    transform: translate3d(0, 0, 0);
+    will-change: transform;
+  }
+  li.alice-carousel__stage-item.__active:nth-child(1){
+    transform: translate3d(-50%, 0, 0);
+  }
+  li.alice-carousel__stage-item.__active:nth-child(3){
+    transform: translate3d(50%, 0, 0);
+  }
 `
 
 export const Title = styled.h1`
@@ -65,8 +76,8 @@ const PosedPanel = posed.ul({
     opacity: 1,
     x: '0',
     transition: {
-      x: { type: 'spring', stiffness: 1000, damping: 75 }
-    }
+      x: { type: 'spring', stiffness: 1000, damping: 75 },
+    },
   },
   closed: {
     height: '0px',
@@ -75,13 +86,13 @@ const PosedPanel = posed.ul({
     transition: {
       opacity: { ease: 'easeInOut', duration: 300, delay: 0 },
       height: { ease: 'easeInOut', duration: 200, delay: 300 },
-      x: { ease: 'linear', duration: 0, delay: 500 }
-    }
-  }
+      x: { ease: 'linear', duration: 0, delay: 500 },
+    },
+  },
 })
 const PosedFadeInItem = posed.li({
   open: { opacity: 1 },
-  closed: { opacity: 0 }
+  closed: { opacity: 0 },
 })
 export const StyledHeader = styled.header`
   margin-bottom: 200px;
@@ -125,7 +136,7 @@ export const MenuToggle = styled.button.attrs({
   type: 'button',
   'aria-label': 'more',
   'aria-controls': 'short-menu',
-  'aria-haspopup': true
+  'aria-haspopup': true,
 })`
   &:focus {
     outline: none;
