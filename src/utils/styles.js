@@ -8,6 +8,7 @@ export const GlobalStyle = createGlobalStyle`
   ${styledNormalize}
   *{
     box-sizing: border-box;
+    max-width: 100%;
   }
   body {
     margin: 0;
@@ -25,17 +26,6 @@ export const GlobalStyle = createGlobalStyle`
     list-style: none;
     margin: 0;
     padding: 0;
-  }
-  .alice-carousel__stage-item.__active {
-    transition: 100ms;
-    transform: translate3d(0, 0, 0);
-    will-change: transform;
-  }
-  li.alice-carousel__stage-item.__active:nth-child(1){
-    transform: translate3d(-50%, 0, 0);
-  }
-  li.alice-carousel__stage-item.__active:nth-child(3){
-    transform: translate3d(50%, 0, 0);
   }
 `
 
