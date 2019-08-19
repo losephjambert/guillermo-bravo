@@ -16,41 +16,32 @@ const StyledCarouselWrapper = styled.div`
       bottom: 0;
       right: 0;
     }
+
     .slider {
-      height: 100%;
-    }
-    .slide {
-      min-width: auto !important;
-      width: 100%;
-
-      margin: 0;
-      text-align: center;
-      height: 100%;
-      width: 100%;
-      background-color: rgb(148, 0, 211);
       display: flex;
-      flex-flow: column;
+      flex-flow: row nowrap;
+    }
 
-      div {
-        outline: 1px solid blue;
-        width: 100%;
-        flex: 1 0 auto;
+    .slide {
+      height: 100vh;
+      min-width: 100%;
+      outline: 1px solid red;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: rgb(148, 0, 211);
 
-        img {
-          max-height: 100%;
-          max-width: 100%;
-          margin: auto;
-          position: absolute;
-          top: 0;
-          bottom: 0;
-          left: 0;
-          right: 0;
-          outline: 1px solid red;
-        }
+      img {
+        position: absolute;
+        max-height: 100%;
+        max-width: 90%;
       }
     }
   }
 `
+
+const MyCarouselWrapper = styled.div``
 
 export default class SimpleSlider extends Component {
   render() {
@@ -67,28 +58,24 @@ export default class SimpleSlider extends Component {
     }
 
     let images = [
-      'https://www.fillmurray.com/1600/900',
+      'https://www.fillmurray.com/1600/1900',
       'https://www.fillmurray.com/900/1600',
-      'https://www.fillmurray.com/1600/900',
+      'https://www.fillmurray.com/1600/1900',
       'https://www.fillmurray.com/900/1600',
-      'https://www.fillmurray.com/1600/900',
+      'https://www.fillmurray.com/1600/1900',
       'https://www.fillmurray.com/900/1600',
-      'https://www.fillmurray.com/1600/900',
+      'https://www.fillmurray.com/1600/1900',
       'https://www.fillmurray.com/900/1600',
-      'https://www.fillmurray.com/1600/900',
+      'https://www.fillmurray.com/1600/1900',
       'https://www.fillmurray.com/900/1600',
-      'https://www.fillmurray.com/1600/900',
+      'https://www.fillmurray.com/1600/1900',
       'https://www.fillmurray.com/900/1600',
     ]
     return (
       <StyledCarouselWrapper>
         <Carousel {...RRCSettings}>
           {images.map((image, i) => {
-            return (
-              <div key={i}>
-                <img src={image} />
-              </div>
-            )
+            return <img key={i} src={image} alt="dynamic alt text" visually-hide={true} />
           })}
         </Carousel>
       </StyledCarouselWrapper>
