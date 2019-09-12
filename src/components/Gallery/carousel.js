@@ -35,7 +35,7 @@ const SimpleSlider = () => {
         {images.map((image, i) => {
           return (
             <li key={i}>
-              <img src={image} alt="dynamic alt text" visually-hide={true} />
+              <img src={image} alt="dynamic alt text" />
             </li>
           )
         })}
