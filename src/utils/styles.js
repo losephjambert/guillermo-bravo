@@ -1,6 +1,5 @@
 import Image from 'gatsby-image'
 import styled, { createGlobalStyle } from 'styled-components'
-// import tw from 'tailwind.macro'
 import styledNormalize from 'styled-normalize'
 import posed from 'react-pose'
 
@@ -112,7 +111,7 @@ export const Menu = styled.ul`
 `
 export const MenuItem = styled(PosedFadeInItem)`
   font-weight: bold;
-  color: ${props => (props.active ? 'black' : 'grey')};
+  color: ${props => (props.active ? 'black' : 'black')};
   &:hover {
     color: black;
   }
@@ -134,12 +133,12 @@ export const MenuToggle = styled.button.attrs({
   }
   &:hover {
     color: black;
+    cursor: pointer;
   }
-  color: ${props => (props.active ? 'black' : 'grey')};
+  color: ${props => (props.active ? 'black' : 'black')};
   padding: 0;
   display: inline-flex;
   font-weight: inherit;
-  cursor: pointer;
   border: none;
   outline: none;
   background-color: transparent;
@@ -157,7 +156,7 @@ export const ProductMenu = styled(PosedPanel)`
   align-items: flex-start;
 `
 export const ProductMenuItem = styled(PosedFadeInItem)`
-  color: ${props => (props.active ? 'black' : 'grey')};
+  color: ${props => (props.active ? 'black' : 'black')};
   margin-left: 25px;
   font-size: 0.8em;
   display: inline-flex;
