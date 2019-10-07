@@ -19,9 +19,10 @@ import {
   SiteMenu,
   ProductMenu,
   ProductMenuItem,
-  Title
+  Title,
 } from '../../utils/styles'
 import logo from '../../images/g-b-icon.png'
+import './header.css'
 
 const countQuantity = lineItems => {
   let quantity = 0
@@ -35,7 +36,7 @@ const countQuantity = lineItems => {
 
 const Header = ({ siteTitle, path }) => {
   // Nav Icons
-  const cartIcon = <FontAwesomeIcon style={{ fontSize: '1.9em' }} icon={faShoppingCart} />
+  const cartIcon = <FontAwesomeIcon className="shopping-cart-icon" style={{ fontSize: '1.9em' }} icon={faShoppingCart} />
   const hamburger = <FontAwesomeIcon icon={faBars} />
   // cart quantity
   const context = useContext(StoreContext)
@@ -149,12 +150,12 @@ const Header = ({ siteTitle, path }) => {
 
 Header.propTypes = {
   siteTitle: PropTypes.string,
-  path: PropTypes.string
+  path: PropTypes.string,
 }
 
 Header.defaultProps = {
   siteTitle: ``,
-  path: ``
+  path: ``,
 }
 
 export default Header

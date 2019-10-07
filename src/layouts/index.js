@@ -19,8 +19,8 @@ class Layout extends React.Component {
         this.setState(state => ({
           store: {
             ...state.store,
-            adding: true
-          }
+            adding: true,
+          },
         }))
 
         const { checkout, client } = this.state.store
@@ -32,8 +32,8 @@ class Layout extends React.Component {
             store: {
               ...state.store,
               checkout,
-              adding: false
-            }
+              adding: false,
+            },
           }))
         })
       },
@@ -42,8 +42,8 @@ class Layout extends React.Component {
           this.setState(state => ({
             store: {
               ...state.store,
-              checkout: res
-            }
+              checkout: res,
+            },
           }))
         })
       },
@@ -54,12 +54,12 @@ class Layout extends React.Component {
           this.setState(state => ({
             store: {
               ...state.store,
-              checkout: res
-            }
+              checkout: res,
+            },
           }))
         })
-      }
-    }
+      },
+    },
   }
 
   async initializeCheckout() {
@@ -75,8 +75,8 @@ class Layout extends React.Component {
       this.setState(state => ({
         store: {
           ...state.store,
-          checkout
-        }
+          checkout,
+        },
       }))
     }
 
@@ -125,7 +125,7 @@ class Layout extends React.Component {
             <>
               <Header siteTitle={data.site.siteMetadata.title} path={this.props.path} />
               <main>{children}</main>
-              <footer>© {new Date().getFullYear()} Guillermo Bravo, Seattle, WA</footer>
+              {/* <footer>© {new Date().getFullYear()} Guillermo Bravo, Seattle, WA</footer> */}
             </>
           )}
         />
@@ -135,7 +135,7 @@ class Layout extends React.Component {
 }
 
 Layout.propTypes = {
-  children: PropTypes.node.isRequired
+  children: PropTypes.node.isRequired,
 }
 
 export default Layout

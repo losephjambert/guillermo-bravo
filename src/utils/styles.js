@@ -1,6 +1,5 @@
 import Image from 'gatsby-image'
 import styled, { createGlobalStyle } from 'styled-components'
-// import tw from 'tailwind.macro'
 import styledNormalize from 'styled-normalize'
 import posed from 'react-pose'
 
@@ -8,6 +7,7 @@ export const GlobalStyle = createGlobalStyle`
   ${styledNormalize}
   *{
     box-sizing: border-box;
+    max-width: 100%;
   }
   body {
     margin: 0;
@@ -65,8 +65,8 @@ const PosedPanel = posed.ul({
     opacity: 1,
     x: '0',
     transition: {
-      x: { type: 'spring', stiffness: 1000, damping: 75 }
-    }
+      x: { type: 'spring', stiffness: 1000, damping: 75 },
+    },
   },
   closed: {
     height: '0px',
@@ -75,13 +75,13 @@ const PosedPanel = posed.ul({
     transition: {
       opacity: { ease: 'easeInOut', duration: 300, delay: 0 },
       height: { ease: 'easeInOut', duration: 200, delay: 300 },
-      x: { ease: 'linear', duration: 0, delay: 500 }
-    }
-  }
+      x: { ease: 'linear', duration: 0, delay: 500 },
+    },
+  },
 })
 const PosedFadeInItem = posed.li({
   open: { opacity: 1 },
-  closed: { opacity: 0 }
+  closed: { opacity: 0 },
 })
 export const StyledHeader = styled.header`
   margin-bottom: 200px;
@@ -111,7 +111,7 @@ export const Menu = styled.ul`
 `
 export const MenuItem = styled(PosedFadeInItem)`
   font-weight: bold;
-  color: ${props => (props.active ? 'black' : 'grey')};
+  color: ${props => (props.active ? 'black' : 'black')};
   &:hover {
     color: black;
   }
@@ -125,7 +125,7 @@ export const MenuToggle = styled.button.attrs({
   type: 'button',
   'aria-label': 'more',
   'aria-controls': 'short-menu',
-  'aria-haspopup': true
+  'aria-haspopup': true,
 })`
   &:focus {
     outline: none;
@@ -133,12 +133,12 @@ export const MenuToggle = styled.button.attrs({
   }
   &:hover {
     color: black;
+    cursor: pointer;
   }
-  color: ${props => (props.active ? 'black' : 'grey')};
+  color: ${props => (props.active ? 'black' : 'black')};
   padding: 0;
   display: inline-flex;
   font-weight: inherit;
-  cursor: pointer;
   border: none;
   outline: none;
   background-color: transparent;
@@ -156,7 +156,7 @@ export const ProductMenu = styled(PosedPanel)`
   align-items: flex-start;
 `
 export const ProductMenuItem = styled(PosedFadeInItem)`
-  color: ${props => (props.active ? 'black' : 'grey')};
+  color: ${props => (props.active ? 'black' : 'black')};
   margin-left: 25px;
   font-size: 0.8em;
   display: inline-flex;

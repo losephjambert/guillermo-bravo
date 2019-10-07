@@ -4,6 +4,9 @@ import { GridContainer, GridItem } from '../utils/styles'
 import SEO from '../components/seo'
 import { Img } from '../utils/styles'
 
+// Test SimpleSlider
+import SimpleSlider from '../components/Gallery/carousel'
+
 const IndexPage = () => {
   const galleryData = useStaticQuery(
     graphql`
@@ -37,13 +40,14 @@ const IndexPage = () => {
   return (
     <>
       <SEO title="Home" keywords={[`sneakers`, `fashion`, `sustainable`, `Seattle`]} />
-      <GridContainer>
+      <SimpleSlider images={galleryImages} />
+      {/* <GridContainer>
         {galleryImages.map(image => (
           <GridItem key={image.id}>
             <Img fluid={image.fluid} alt={image.title} />
           </GridItem>
         ))}
-      </GridContainer>
+      </GridContainer> */}
     </>
   )
 }
