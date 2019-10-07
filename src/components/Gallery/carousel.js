@@ -28,17 +28,23 @@ const CarouselBackgroundImage = styled.div`
   height: 100vh;
   display: flex;
   align-items: center;
+  justify-content: center;
   div {
-    flex-basis: 100%;
+    flex-basis: 600px;
+    /* max-height: 100vh;
+    div {
+      max-height: 100vh;
+    } */
   }
   img {
-    padding: 100px 30px;
+    max-width: 600px;
+    padding: 10vh 0;
   }
 `
 
 let images = [
   'https://via.placeholder.com/1600/1900',
-  'https://via.placeholder.com/900/1600',
+  'https://via.placeholder.com/500x750',
   'https://via.placeholder.com/1600/1900',
   'https://via.placeholder.com/900/1600',
   'https://via.placeholder.com/1600/1900',
