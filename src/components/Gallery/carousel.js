@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import styled, { css } from 'styled-components'
 import 'react-responsive-carousel/lib/styles/carousel.min.css'
 import { Carousel } from 'react-responsive-carousel'
+import { Img } from '../../utils/styles'
 
 const CarouselWrapper = styled.section`
   position: fixed;
@@ -24,16 +25,14 @@ const CarouselWrapper = styled.section`
   }
 `
 const CarouselBackgroundImage = styled.div`
-  /* outline: 5px solid red; */
   height: 100vh;
-  background-image: ${props => `url(${props.image})`};
-  background-repeat: no-repeat;
-  background-size: 75%;
-  background-position: center;
+  display: flex;
+  align-items: center;
+  div {
+    flex-basis: 100%;
+  }
   img {
-    visibility: collapse;
-    height: 0;
-    width: 0;
+    padding: 100px 30px;
   }
 `
 
@@ -52,23 +51,23 @@ let images = [
   'https://via.placeholder.com/900/1600',
 ]
 
-export default function SimpleSlider() {
+export default function SimpleSlider(props) {
   return (
     <CarouselWrapper>
       <Carousel
         centerMode={true}
         centerSlidePercentage={50}
-        emulateTouch={true}
+        emulateTouch={false}
         infiniteLoop={true}
         showArrows={false}
         showThumbs={false}
         useKeyboardArrows={true}
         showIndicators={false}
       >
-        {images.map((image, i) => {
+        {props.images.map((image, i) => {
           return (
-            <CarouselBackgroundImage key={i} image={image}>
-              <img src={image} alt="dynamic alt text" />
+            <CarouselBackgroundImage key={i}>
+              <Img fluid={image.fluid} alt="dynamic alt text" />
             </CarouselBackgroundImage>
           )
         })}

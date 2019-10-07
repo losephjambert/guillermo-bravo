@@ -40,7 +40,7 @@ const IndexPage = () => {
   return (
     <>
       <SEO title="Home" keywords={[`sneakers`, `fashion`, `sustainable`, `Seattle`]} />
-      <SimpleSlider />
+      <SimpleSlider images={galleryImages} />
       {/* <GridContainer>
         {galleryImages.map(image => (
           <GridItem key={image.id}>
