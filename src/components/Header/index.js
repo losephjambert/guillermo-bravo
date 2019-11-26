@@ -131,11 +131,11 @@ const Header = ({ siteTitle, path }) => {
             </MenuItem>
           </Menu>
         </NavItem>
-        <NavItem>
+        {/* <NavItem>
           <Link to="/">
             <Title bgImage={logo}>{siteTitle}</Title>
           </Link>
-        </NavItem>
+        </NavItem> */}
         <NavItem>
           <div>
             <Link to="/cart">

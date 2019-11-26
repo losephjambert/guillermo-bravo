@@ -83,27 +83,20 @@ const PosedFadeInItem = posed.li({
   open: { opacity: 1 },
   closed: { opacity: 0 },
 })
-export const StyledHeader = styled.header`
-  margin-bottom: 200px;
-`
+export const StyledHeader = styled.header``
+
 export const Nav = styled.nav`
   position: fixed;
-  top: 50px;
+  top: 20px;
   left: 0;
   z-index: 100;
-  padding: 0 50px;
-  width: 100%;
-  display: grid;
-  grid-template-columns: repeat(3, 200px);
-  grid-column-gap: 1fr;
-  justify-content: space-between;
-  justify-items: end;
-`
-export const NavItem = styled.div`
+  padding: 0 20px;
   width: 100%;
   display: flex;
-  justify-content: flex-end;
+  justify-content: flex-start;
 `
+export const NavItem = styled.div``
+
 export const Menu = styled.ul`
   font-size: 2em;
   display: inline-flex;

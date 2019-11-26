@@ -5,7 +5,7 @@ import SEO from '../components/seo'
 import { Img } from '../utils/styles'
 
 // Test SimpleSlider
-import SimpleSlider from '../components/Gallery/carousel'
+import Slider from '../components/Gallery/customSlider'
 
 const IndexPage = () => {
   const galleryData = useStaticQuery(
@@ -40,14 +40,7 @@ const IndexPage = () => {
   return (
     <>
       <SEO title="Home" keywords={[`sneakers`, `fashion`, `sustainable`, `Seattle`]} />
-      <SimpleSlider images={galleryImages} />
-      {/* <GridContainer>
-        {galleryImages.map(image => (
-          <GridItem key={image.id}>
-            <Img fluid={image.fluid} alt={image.title} />
-          </GridItem>
-        ))}
-      </GridContainer> */}
+      <Slider items={galleryImages} />
     </>
   )
 }

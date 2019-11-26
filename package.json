@@ -31,7 +31,6 @@
     "gatsby-transformer-sharp": "^2.2.4",
     "graphql-tag": "^2.10.1",
     "js-yaml": "^3.13.1",
-    "nuka-carousel": "^4.5.9",
     "prop-types": "^15.7.2",
     "querystringify": "2.1.1",
     "react": "16.8.6",
@@ -40,8 +39,6 @@
     "react-dom": "16.8.6",
     "react-helmet": "^5.2.1",
     "react-pose": "^4.0.8",
-    "react-responsive-carousel": "^3.1.49",
-    "react-slick": "^0.24.0",
     "shopify-buy": "^2.6.1",
     "styled-components": "^4.3.2",
     "styled-normalize": "^8.0.6"
@@ -62,10 +59,7 @@
     "test": "echo \"Write tests! -> https://gatsby.app/unit-testing\""
   },
   "devDependencies": {
-    "prettier": "^1.18.2",
-    "react-alice-carousel": "^1.15.2",
-    "tailwind.macro": "^0.5.10",
-    "tailwindcss": "^1.0.5"
+    "prettier": "^1.18.2"
   },
   "repository": {
     "type": "git",
