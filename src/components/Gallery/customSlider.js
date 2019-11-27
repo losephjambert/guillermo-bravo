@@ -5,7 +5,7 @@ import styled from 'styled-components'
 const StyledSliderTrack = styled.section`
   display: flex;
   overflow: hidden;
-  width: 100vw;
+  width: 100%;
   position: relative;
   height: 100vh;
 `
@@ -14,15 +14,15 @@ const StyledInnerSliderTrack = styled.section`
   position: absolute;
   height: 100%;
   display: flex;
-  width: ${props => props.width}vw;
-  transform: translate3d(${props => props.trackPosition}vw, 0, 0);
+  width: ${props => props.width}%;
+  transform: translate3d(${props => props.trackPosition}%, 0, 0);
   justify-content: flex-start;
   transition: 300ms;
 `
 
 const StyledSliderItem = styled.div`
   transition: 450ms;
-  min-width: 50vw;
+  min-width: 50%;
   height: 100vh;
   display: flex;
   align-items: center;
@@ -35,6 +35,9 @@ const StyledSliderItem = styled.div`
   }
   div {
     flex-basis: 100%;
+  }
+  &:hover {
+    cursor: pointer;
   }
 `
 
