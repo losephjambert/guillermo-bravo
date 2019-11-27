@@ -27,11 +27,11 @@ const StyledSliderItem = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  opacity: 0.6;
+  // opacity: 0.6;
   transform: scale(0.6);
   &.active {
-    opacity: 1;
-    transform: scale(0.8);
+    // opacity: 1;
+    // transform: scale(0.8);
   }
   div {
     flex-basis: 100%;
